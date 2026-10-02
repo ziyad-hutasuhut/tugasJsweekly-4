@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="id" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>HSI Product Explorer — Phase 5</title>
+  <meta
+    name="description"
+    content="Demo pembelajaran Phase 5 Coders Club HSI Boarding School — Consume API with JavaScript."
+  />
+
+  <!-- Pico CSS sebagai base styling -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+  />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div>
+        <p class="eyebrow">HSI Boarding School • Coders Club • Kelas XI</p>
+        <h1>HSI Product Explorer</h1>
+        <p class="subtitle">
+          Phase 5 — Consume API with JavaScript
+        </p>
+      </div>
+
+      <div class="api-flow" aria-label="Alur data aplikasi">
+        <span>API</span>
+        <strong>→</strong>
+        <span>JavaScript</span>
+        <strong>→</strong>
+        <span>DOM</span>
+        <strong>→</strong>
+        <span>UI</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="intro-card">
+      <div>
+        <small>Demo API</small>
+        <h2>Explore Products 🌐</h2>
+        <p>
+          Data di bawah diambil dari
+          <code>dummyjson.com</code>
+          menggunakan <code>fetch()</code>.
+        </p>
+      </div>
+
+      <button id="reload-btn" class="outline">
+        🔄 Reload Data
+      </button>
+    </section>
+
+    <section class="controls" aria-label="Kontrol produk">
+      <label>
+        🔎 Cari produk
+        <input
+          id="search-input"
+          type="search"
+          placeholder="Contoh: phone, beauty, laptop..."
+          autocomplete="off"
+        />
+      </label>
+
+      <label>
+        🏷 Kategori
+        <select id="category-select">
+          <option value="all">Semua kategori</option>
+        </select>
+      </label>
+
+      <label>
+        ↕️ Urutkan
+        <select id="sort-select">
+          <option value="default">Default</option>
+          <option value="price-asc">Harga termurah</option>
+          <option value="price-desc">Harga termahal</option>
+          <option value="rating-desc">Rating tertinggi</option>
+          <option value="name-asc">Nama A–Z</option>
+        </select>
+      </label>
+
+      <button id="reset-btn" class="secondary">
+        Reset Filter
+      </button>
+    </section>
+
+    <section class="summary-bar">
+      <p id="result-summary">Menyiapkan data...</p>
+      <p class="status-note">
+        <span class="status-dot"></span>
+        Public API • No login
+      </p>
+    </section>
+
+    <!-- Loading State -->
+    <section id="loading-state" class="state-card" aria-live="polite">
+      <div class="spinner" aria-hidden="true"></div>
+      <h3>Loading products...</h3>
+      <p>JavaScript sedang mengambil data dari API.</p>
+    </section>
+
+    <!-- Error State -->
+    <section id="error-state" class="state-card error-state" hidden aria-live="assertive">
+      <div class="state-icon">⚠️</div>
+      <h3>Gagal mengambil data</h3>
+      <p id="error-message">
+        Coba periksa koneksi internet lalu ulangi.
+      </p>
+      <button id="retry-btn">🔄 Coba Lagi</button>
+    </section>
+
+    <!-- Empty State -->
+    <section id="empty-state" class="state-card" hidden>
+      <div class="state-icon">📭</div>
+      <h3>Produk tidak ditemukan</h3>
+      <p>Coba gunakan kata pencarian atau kategori lain.</p>
+    </section>
+
+    <!-- Product Grid -->
+    <section
+      id="product-grid"
+      class="product-grid"
+      aria-label="Daftar produk"
+      hidden
+    ></section>
+  </main>
+
+  <footer class="container site-footer">
+    <small>
+      Learn • Build • Grow 🚀 — Fokus Phase 5:
+      API, JSON, fetch(), async/await, search, filter, loading, error, dan empty state.
+    </small>
+  </footer>
+
+  <!-- Native dialog untuk detail product -->
+  <dialog id="product-dialog">
+    <article class="dialog-card">
+      <button
+        id="dialog-close"
+        class="close"
+        aria-label="Tutup detail produk"
+      ></button>
+
+      <div id="dialog-content">
+        <!-- Diisi oleh JavaScript -->
+      </div>
+    </article>
+  </dialog>
+
+  <!-- Fokus Phase 5 ada di file ini -->
+  <script src="script.js"></script>
+</body>
+</html>
